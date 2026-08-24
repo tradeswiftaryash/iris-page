@@ -14,7 +14,10 @@ export async function POST(request) {
 
     const secret = process.env.RAZORPAY_KEY_SECRET;
     if (!secret) {
-      throw new Error("RAZORPAY_KEY_SECRET is not configured.");
+      return NextResponse.json(
+        { verified: false, error: "Razorpay credentials are not configured on the server." },
+        { status: 400 }
+      );
     }
 
     // Razorpay's recommended verification: HMAC-SHA256 of "order_id|payment_id"

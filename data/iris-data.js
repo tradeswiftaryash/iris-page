@@ -21,7 +21,7 @@ export const PLANS = [
     id: "fundamental",
     name: "Fundamental",
     tagline:
-      "The service is designed to empower confident decision-making and serve as a catalyst for your journey toward sustainable wealth creation.",
+      "The service empowers confident, informed decision-making, providing valuable insights to support your journey toward sustainable wealth creation and long-term financial growth.",
     benefitsTitle: "Benefits: Fundamentals",
     benefits: [
       "Fundamentally sound stock picks — curated for long-term portfolio growth and wealth creation",
@@ -200,7 +200,15 @@ export const FAQS = [
   },
   {
     q: "How do I subscribe?",
-    a: "You may contact Tradeswift through the official contact details provided on our website or submit your details on the registration portal. Our authorised team will explain the available Research services, applicable fees and subscription process.",
+    a: (
+      <>
+        You may contact Tradeswift through the official contact details provided on our website or submit your details on the registration portal (
+        <a href="#packages" className="font-semibold text-brand-blue hover:underline">
+          click here
+        </a>
+        ). Our authorised team will explain the available Research services, applicable fees and subscription process.
+      </>
+    ),
   },
   {
     q: "Should I invest my entire capital based on Tradeswift's recommendations?",
@@ -223,9 +231,9 @@ export const FAQS = [
 export const CONTACT = {
   heading: "Ready for subscription?",
   body: "Talk to our Research specialists today. We'll guide you through the onboarding process, understand your goals and craft a personalised research subscription.",
-  cta: { label: "How to Empanel", href: "/how-to-empanel" },
+  cta: { label: "Subscribe Now", href: "#packages" },
   whatsapp: "+91 9460450505",
-  landline: "0141-4050505",
-  email: "iris@tradeswift.net",
+  landline: "0141-4050517",
+  email: "advisory@tradeswift.net",
   address: "4th Floor, Baid House, 1, Tara Nagar, Ajmer Road, Jaipur",
 };

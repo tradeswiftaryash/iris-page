@@ -2,7 +2,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "Tradeswift",
-  description: "Tradeswift — Broking, PMS & Research",
+  description: "Tradeswift — IRIS",
 };
 
 // This root layout exists only so this repo can build/run standalone
