@@ -38,9 +38,16 @@ export default function Hero() {
             </Link>
           </div>
 
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-brand-line bg-white px-3 py-1.5 text-xs font-medium text-brand-slate">
-            <ShieldCheck size={14} className="text-brand-blue" />
-            {HERO.badge}
+          <div className="mt-6 flex flex-col items-start gap-1">
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-line bg-white px-3 py-1.5 text-xs font-medium text-brand-slate">
+              <ShieldCheck size={14} className="text-brand-blue" />
+              {HERO.badge}
+            </div>
+            {HERO.sebiRegNo && (
+              <p className="pl-8 text-xs font-medium text-brand-slate/80">
+                {HERO.sebiRegNo}
+              </p>
+            )}
           </div>
         </div>
 

@@ -14,6 +14,7 @@ export const HERO = {
   primaryCta: { label: "See Our Packages", href: "#packages" }, // "button 1"
   secondaryCta: { label: "Know More", href: "#our-plans" }, // "button 3"
   badge: "SEBI Registered Research Analyst",
+  sebiRegNo: "SEBI Reg. No.: INH000029607",
 };
 
 // "OUR PLANS" — the three descriptive cards (Figma: Rectangle 4 / 5 / 6)
@@ -253,3 +254,11 @@ export const CONTACT = {
   email: "advisory@tradeswift.net",
   address: "4th Floor, Baid House, 1, Tara Nagar, Ajmer Road, Jaipur",
 };
+
+export const COMPLIANCE_DOCS = [
+  { id: "investor-charter", title: "Investor Charter", pdfUrl: "#" },
+  { id: "disclosure-document", title: "Disclosure Document", pdfUrl: "#" },
+  { id: "dos-and-donts", title: "Do's & Don'ts", pdfUrl: "#" },
+  { id: "mitc", title: "MITC", pdfUrl: "#" },
+  { id: "escalation-matrix", title: "Investor Grievance Escalation matrix", pdfUrl: "#" },
+];
