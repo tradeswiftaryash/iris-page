@@ -16,6 +16,7 @@ export default function Packages() {
   const orderSummaryRef = useRef(null);
 
   const pricing = useMemo(() => calculatePricing(selected), [selected]);
+  const unselectedPackages = useMemo(() => PACKAGES.filter((p) => !selected.includes(p.id)), [selected]);
 
   const scrollToOrderSummary = () => {
     setTimeout(() => {
@@ -170,45 +171,109 @@ export default function Packages() {
           <div
             id="your-order"
             ref={orderSummaryRef}
-            className="mx-auto mt-10 max-w-2xl scroll-mt-24 rounded-xl2 border border-brand-blue/30 bg-white p-6 shadow-cardHover"
+            className="mx-auto mt-10 max-w-5xl scroll-mt-24 flex flex-col lg:flex-row items-stretch justify-center gap-6"
           >
-            <h3 className="text-sm font-bold uppercase tracking-wide text-brand-slate">Your Order</h3>
-            <ul className="mt-3 space-y-1.5">
-              {pricing.plans.map((p) => (
-                <li key={p.id} className="flex justify-between text-sm text-brand-ink">
-                  <span>{p.name}</span>
-                  <span>{currency(p.price)}</span>
-                </li>
-              ))}
-            </ul>
+            {/* Left Column: YOUR ORDER payment card */}
+            <div className={`w-full ${unselectedPackages.length > 0 ? "lg:w-1/2" : "max-w-2xl mx-auto"} flex flex-col justify-between rounded-xl2 border border-brand-blue/30 bg-white p-6 shadow-cardHover transition-all`}>
+              <div>
+                <h3 className="text-sm font-bold uppercase tracking-wide text-brand-slate">Your Order</h3>
+                <ul className="mt-3 space-y-1.5">
+                  {pricing.plans.map((p) => (
+                    <li key={p.id} className="flex justify-between text-sm text-brand-ink font-medium">
+                      <span>{p.name}</span>
+                      <span>{currency(p.price)}</span>
+                    </li>
+                  ))}
+                </ul>
 
-            <div className="mt-4 space-y-1.5 border-t border-brand-line pt-4 text-sm">
-              <div className="flex justify-between text-brand-slate">
-                <span>Subtotal</span>
-                <span>{currency(pricing.subtotal)}</span>
-              </div>
-              {pricing.discountRate > 0 && (
-                <div className="flex justify-between text-emerald-600">
-                  <span>Combo discount ({Math.round(pricing.discountRate * 100)}%)</span>
-                  <span>&minus;{currency(pricing.discountAmount)}</span>
+                <div className="mt-4 space-y-1.5 border-t border-brand-line pt-4 text-sm">
+                  <div className="flex justify-between text-brand-slate">
+                    <span>Subtotal</span>
+                    <span>{currency(pricing.subtotal)}</span>
+                  </div>
+                  {pricing.discountRate > 0 && (
+                    <div className="flex justify-between text-emerald-600 font-semibold">
+                      <span>Combo discount ({Math.round(pricing.discountRate * 100)}%)</span>
+                      <span>&minus;{currency(pricing.discountAmount)}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between text-brand-slate">
+                    <span>GST ({Math.round(GST_RATE * 100)}%)</span>
+                    <span>{currency(pricing.gstAmount)}</span>
+                  </div>
+                  <div className="flex justify-between border-t border-brand-line pt-2 text-base font-bold text-brand-ink">
+                    <span>Total payable</span>
+                    <span>{currency(pricing.total)}</span>
+                  </div>
                 </div>
-              )}
-              <div className="flex justify-between text-brand-slate">
-                <span>GST ({Math.round(GST_RATE * 100)}%)</span>
-                <span>{currency(pricing.gstAmount)}</span>
               </div>
-              <div className="flex justify-between border-t border-brand-line pt-2 text-base font-bold text-brand-ink">
-                <span>Total payable</span>
-                <span>{currency(pricing.total)}</span>
-              </div>
+
+              <button
+                onClick={() => handleLeadModalOpen(selected)}
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-brand-blue px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-blueDark disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                Subscribe
+              </button>
             </div>
 
-            <button
-              onClick={() => handleLeadModalOpen(selected)}
-              className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-brand-blue px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-blueDark disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              Proceed to Payment
-            </button>
+            {/* Right Column: Upsell side panel for remaining packages */}
+            {unselectedPackages.length > 0 ? (
+              <div className="w-full lg:w-1/2 flex flex-col justify-between rounded-xl2 border border-brand-blue/30 bg-white p-6 shadow-card transition-all">
+                <div>
+                  <h3 className="text-sm font-bold uppercase tracking-wide text-brand-slate">
+                    Add Packages & Save More
+                  </h3>
+
+                  <div className="mt-4 space-y-3">
+                    {unselectedPackages.map((pkg) => (
+                      <div
+                        key={pkg.id}
+                        className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-xl border border-brand-line p-4 transition hover:border-brand-blue/40 hover:bg-brand-surface/50"
+                      >
+                        <div>
+                          <h4 className="text-lg font-bold text-brand-ink">{pkg.name}</h4>
+                          <p className="mt-0.5 text-base font-extrabold text-brand-blue">
+                            {currency(pkg.price)}
+                            <span className="ml-1 text-xs font-normal text-brand-slate">/ year + GST</span>
+                          </p>
+                        </div>
+                        <label className="flex cursor-pointer items-center gap-2 self-start sm:self-center rounded-lg border border-brand-blue/20 bg-blue-50/60 px-3.5 py-2 text-xs font-semibold text-brand-blue transition hover:bg-blue-100/80">
+                          <input
+                            type="checkbox"
+                            checked={false}
+                            onChange={() => toggle(pkg.id)}
+                            className="h-4 w-4 rounded border-brand-line text-brand-blue focus:ring-brand-blue cursor-pointer"
+                          />
+                          Add to combo
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Discount Banner text below packages */}
+                <div className="mt-5 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-brand-blue/20 p-3 text-center shadow-sm">
+                  {selected.length === 1 && (
+                    <p className="text-xs font-extrabold text-brand-blue tracking-wide uppercase">
+                      Add and get 15% off
+                    </p>
+                  )}
+                  {selected.length === 2 && (
+                    <p className="text-xs font-extrabold text-brand-blue tracking-wide uppercase">
+                      Add this and get 25% off
+                    </p>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div className="w-full lg:w-1/2 flex flex-col justify-center items-center rounded-xl2 border border-emerald-200 bg-emerald-50/50 p-6 text-center">
+                <CheckCircle2 size={36} className="text-emerald-600 mb-2" />
+                <h4 className="text-base font-bold text-emerald-900">Maximum Discount Unlocked!</h4>
+                <p className="mt-1 text-xs text-emerald-700">
+                  You have selected all 3 packages and saved <span className="font-bold">25% off</span> on your entire subscription!
+                </p>
+              </div>
+            )}
           </div>
         )}
 

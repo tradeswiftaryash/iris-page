@@ -7,7 +7,8 @@
 
 export const HERO = {
   eyebrow: "Research & Advisory",
-  title: "Investment and Research Intelligence Services (IRIS)",
+  title: "IRIS",
+  subtitle: "Investment and Research Intelligence Services",
   description:
     "IRIS is designed to provide investors/traders with timely, data-driven and actionable market data points and inputs to support better investment decisions. The service has three subscription models — Fundamental, Technical and Option Strategies. With a focus on quality research, disciplined analysis and practical insights, IRIS helps investors/traders cut through market noise and provides high-conviction trading ideas.",
   primaryCta: { label: "See Our Packages", href: "#packages" }, // "button 1"

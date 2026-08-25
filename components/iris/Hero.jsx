@@ -7,13 +7,17 @@ export default function Hero() {
     <section className="relative overflow-hidden bg-white">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-10 px-6 py-14 md:py-20 lg:grid-cols-2 lg:gap-16">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full bg-brand-surface px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-blue">
+          <span className="-ml-4 inline-flex items-center gap-2 rounded-full bg-brand-surface px-4 py-1.5 text-sm sm:text-base font-bold uppercase tracking-wide text-brand-blue">
             {HERO.eyebrow}
           </span>
 
-          <h1 className="mt-4 text-3xl font-extrabold leading-tight text-brand-ink sm:text-4xl md:text-[42px]">
+          <h1 className="mt-4 text-4xl font-extrabold leading-none text-brand-ink sm:text-5xl md:text-[54px]">
             {HERO.title}
           </h1>
+
+          <p className="mt-2 text-base sm:text-lg font-semibold text-brand-slate">
+            {HERO.subtitle}
+          </p>
 
           <p className="mt-5 max-w-xl text-base leading-relaxed text-brand-slate">
             {HERO.description}
