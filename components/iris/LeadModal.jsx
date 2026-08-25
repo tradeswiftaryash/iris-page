@@ -114,10 +114,10 @@ export default function LeadModal({ planIds = [], onClose, onSuccess }) {
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
               <CheckCircle2 size={32} />
             </div>
-            <h4 className="mt-4 text-lg font-bold text-brand-ink">Interest Submitted Successfully!</h4>
+            <h4 className="mt-4 text-lg font-bold text-brand-ink">Submitted Successfully!</h4>
             <p className="mt-2 text-sm text-brand-slate">
               Thank you <span className="font-semibold text-brand-ink">{name}</span>! Your interest for{" "}
-              <span className="font-semibold text-brand-blue">{selectedNames}</span> has been recorded and saved in our database. Our research team will contact you shortly.
+              <span className="font-semibold text-brand-blue">{selectedNames}</span> has been recorded and saved in our database. Our team will contact you shortly.
             </p>
             <button
               type="button"
@@ -215,7 +215,7 @@ export default function LeadModal({ planIds = [], onClose, onSuccess }) {
                 className="flex items-center justify-center gap-2 rounded-lg bg-brand-red px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition hover:bg-brand-redDark disabled:opacity-60"
               >
                 {loading && <Loader2 size={16} className="animate-spin" />}
-                {loading ? "Submitting..." : "Submit Interest"}
+                {loading ? "Submitting..." : "Submit"}
               </button>
             </div>
           </form>
