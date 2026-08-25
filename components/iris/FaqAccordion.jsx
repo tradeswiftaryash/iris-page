@@ -30,7 +30,7 @@ export default function FaqAccordion() {
                       className="shrink-0 text-brand-blue transition-transform duration-200 group-open:rotate-180"
                     />
                   </summary>
-                  <p className="mt-3 text-sm leading-relaxed text-brand-slate">{item.a}</p>
+                  <div className="mt-3 text-sm leading-relaxed text-brand-slate">{item.a}</div>
                 </details>
               ))}
             </div>
