@@ -124,24 +124,24 @@ export const GST_RATE = 0.18; // "Charges Exclude GST — GST Rate 18%"
 // FAQ.docx — "Tradeswift Research – Frequently Asked Questions"
 export const FAQS = [
   {
-    q: "What is Tradeswift Research?",
-    a: "Tradeswift Research provides research-based market insights and recommendations to investors and market participants. The research services are provided in accordance with the applicable regulatory framework governing SEBI-registered Research Analysts.",
+    q: "What is Research Advisory – IRIS by Tradeswift?",
+    a: "Investment and Research Intelligence Service (IRIS) is designed to provide investors/trader with timely, data-driven and actionable market data points and inputs to support better investment decisions. The research advisory services are provided in accordance with the applicable regulatory framework governing SEBI-registered Research Analysts.",
   },
   {
     q: "Is Tradeswift SEBI registered?",
     a: "Yes. Tradeswift's Research Analyst activities are undertaken under its SEBI registration. The applicable SEBI registration details, disclosures and Investor Charter are available on our website.",
   },
   {
-    q: "What type of research does Tradeswift provide?",
-    a: "Depending on the subscription/service selected, research may cover different segments and strategies, including long-term investment ideas, short-term trading opportunities, positional opportunities and other securities-market research. The nature and scope of recommendations will depend on the particular research product subscribed.",
+    q: "What type of research advisory does Tradeswift provide?",
+    a: "Depending on the subscription/service selected, research may cover different segments and strategies, including long term investment ideas, short-term trading opportunities, positional and momentum opportunities, derivative strategies and other securities-market research. The nature and scope of recommendations will depend on the particular research product subscribed.",
   },
   {
-    q: "Is Tradeswift's Research service the same as its stock broking service?",
-    a: "No. Research services and stock broking/execution services are distinct activities. The Research Analyst provides research and recommendations, whereas the stock broker provides brokerage and execution-related services to clients who maintain the relevant trading account. A research recommendation does not constitute an instruction to execute a trade, and the final investment or trading decision remains with the investor.",
+    q: "Is Tradeswift's Research Advisory services the same as its stock broking service?",
+    a: "No. Research services and stock broking/execution services are distinct activities. The Research Advisory provides research and recommendations, whereas the stock broker provides brokerage and execution-related services to clients who maintain the relevant trading account. A research recommendation does not constitute an instruction to execute a trade, and the final investment or trading decision remains with the investor.",
   },
   {
     q: "What are the paid Telegram research channels?",
-    a: "Paid Telegram channels are subscription-based research services through which subscribers receive research recommendations and market updates according to the specific objective and scope of the selected channel. The features, nature of recommendations and coverage may differ between channels.",
+    a: "Paid Telegram channels are subscription-based research advisory services through which subscribers receive research recommendations and market updates according to the specific objective and scope of the selected channel. The features, nature of recommendations and coverage may differ between channels.",
   },
   {
     q: "Who provides the research recommendations?",
@@ -153,15 +153,30 @@ export const FAQS = [
   },
   {
     q: "What is the maximum risk in a recommendation?",
-    a: "There is no universally applicable maximum loss for a market recommendation. Risk depends on factors such as the security, market conditions, volatility, position size, entry price and execution price. Tradeswift provides stop-loss levels as part of a recommendation. Investors should independently assess their risk tolerance and position sizing before acting on any recommendation.",
+    a: "There is no universally applicable maximum loss for a market recommendation. Risk depends on factors such as the security, market conditions, volatility, position size, entry price and execution price. Tradeswift provides the stop-loss and target levels as part of a recommendation. Investors should independently assess their risk tolerance and position sizing before acting on any recommendation.",
   },
   {
     q: "Can I lose money even if I follow the recommendation exactly?",
-    a: "Yes. Market movements, volatility, liquidity, gaps and execution conditions can result in losses even when a recommendation is followed as communicated. Past performance of any recommendation or strategy should not be considered indicative of future results.",
+    a: "Yes, you may lose money. Market movements, volatility, liquidity, gaps, slippage and execution conditions can result in losses even when a recommendation is followed as communicated. Past performance of any recommendation or strategy should not be considered indicative of future results. It is extremely important to follow the entry and exit levels for better returns.",
   },
   {
-    q: "Why should I subscribe to a Tradeswift Research channel?",
-    a: "Subscribers may receive research-based market opportunities, timely research updates, entry/target/stop-loss parameters, market commentary and updates, access to selected webinars or analyst interactions (depending on the subscription), and a structured research framework for evaluating market opportunities. Research services are intended to assist investors in making informed decisions and should not be construed as a guarantee of profits.",
+    q: "Why should I subscribe to a Tradeswift Research Advisory channel?",
+    a: (
+      <>
+        Subscribers will receive:
+        <ul className="mt-2 space-y-1 list-disc pl-5">
+          <li>Research-based Market Recommendations</li>
+          <li>Timely Research Updates</li>
+          <li>Entry/Target/Stop-loss Parameters.</li>
+          <li>Market Commentary and Updates</li>
+          <li>Access to selected webinars or analyst interactions, depending on the subscription</li>
+          <li>A structured research framework for evaluating market opportunities</li>
+        </ul>
+        <p className="mt-2">
+          Research services are intended to assist and educate investors in making informed decisions and should not be construed as a guarantee of profits.
+        </p>
+      </>
+    ),
   },
   {
     q: "Do I have to be a client of Tradeswift Broking to subscribe to Research?",
@@ -173,7 +188,7 @@ export const FAQS = [
   },
   {
     q: "Can Tradeswift execute trades on my behalf based on the research call?",
-    a: "A research recommendation by itself does not constitute an instruction to execute a transaction. The subscriber can separately use Tradeswift's brokerage services — the trade is executed only on the basis of the client's valid instructions and applicable brokerage processes.",
+    a: "A research recommendation by itself does not constitute an instruction to execute a transaction. The subscriber can separately use Tradeswift's brokerage services, the trade is executed only on the basis of the client's valid instructions and applicable brokerage processes.",
   },
   {
     q: "How many research calls will I receive?",
@@ -181,7 +196,7 @@ export const FAQS = [
   },
   {
     q: "What will be the mix of calls?",
-    a: "The call mix depends on the service pack you wish to subscribe to. The mix will also depend on market conditions and the opportunities identified through the research process. Different research products may focus on different investment horizons, securities or strategies, and there is no assurance that a particular category of recommendation will be issued with a predetermined frequency.",
+    a: "The call mix depends on the service pack one wish to subscribe. The mix will also depend on market conditions and the opportunities identified through the research process. Different research products may focus on different investment horizons, securities or strategies. There is no assurance that a particular category of recommendation will be issued with a predetermined frequency.",
   },
   {
     q: "Will calls be issued at fixed times?",
@@ -207,7 +222,7 @@ export const FAQS = [
         <a href="#packages" className="font-semibold text-brand-blue hover:underline">
           click here
         </a>
-        ). Our authorised team will explain the available Research services, applicable fees and subscription process.
+        ). Our authorized team will explain the available Research services, applicable fees and subscription process.
       </>
     ),
   },

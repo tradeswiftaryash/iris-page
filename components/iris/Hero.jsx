@@ -15,7 +15,7 @@ export default function Hero() {
             {HERO.title}
           </h1>
 
-          <p className="mt-2 text-base sm:text-lg font-semibold text-brand-slate">
+          <p className="mt-2 text-lg sm:text-xl font-bold text-brand-red">
             {HERO.subtitle}
           </p>
 
