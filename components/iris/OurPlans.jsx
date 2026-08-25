@@ -10,7 +10,7 @@ const ICONS = {
 export default function OurPlans() {
   return (
     <section id="our-plans" className="scroll-mt-20 bg-white">
-      <div className="bg-brand-blue py-3 text-center">
+      <div className="bg-brand-red py-3 text-center">
         <h2 className="text-2xl font-bold tracking-wide text-white md:text-[28px]">OUR PLANS</h2>
       </div>
 

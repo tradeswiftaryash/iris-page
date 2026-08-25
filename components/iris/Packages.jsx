@@ -58,7 +58,7 @@ export default function Packages() {
 
         {/* Combo pack discount box */}
         <div className="mx-auto mt-6 max-w-2xl overflow-hidden rounded-xl2 border border-brand-line bg-white shadow-card">
-          <div className="bg-brand-blue px-6 py-3 text-sm font-semibold text-white text-left">
+          <div className="bg-brand-red px-6 py-3 text-sm font-semibold text-white text-left">
             Combo Pack Discount
           </div>
           <table className="w-full text-left text-sm">
