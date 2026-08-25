@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { PACKAGES, COMBO_DISCOUNTS, GST_RATE } from "@/data/iris-data";
 import { calculatePricing } from "@/lib/pricing";
@@ -13,17 +13,39 @@ export default function Packages() {
   const [selected, setSelected] = useState([]);
   const [status, setStatus] = useState({ state: "idle", message: "" }); // idle | processing | success | error
   const [leadPlanIds, setLeadPlanIds] = useState(null);
+  const orderSummaryRef = useRef(null);
 
   const pricing = useMemo(() => calculatePricing(selected), [selected]);
 
+  const scrollToOrderSummary = () => {
+    setTimeout(() => {
+      orderSummaryRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 100);
+  };
+
   function toggle(planId) {
     setStatus({ state: "idle", message: "" });
+    const isAdding = !selected.includes(planId);
     setSelected((prev) => (prev.includes(planId) ? prev.filter((id) => id !== planId) : [...prev, planId]));
+    if (isAdding) {
+      scrollToOrderSummary();
+    }
   }
 
-  function handleChoosePackage(planIds) {
+  function handleLeadModalOpen(planIds) {
     if (!planIds || planIds.length === 0) return;
     setLeadPlanIds(planIds);
+  }
+
+  function handleChoosePackage(planId) {
+    setStatus({ state: "idle", message: "" });
+    setSelected((prev) => {
+      if (!prev.includes(planId)) {
+        return [...prev, planId];
+      }
+      return prev;
+    });
+    scrollToOrderSummary();
   }
 
   return (
@@ -128,7 +150,7 @@ export default function Packages() {
 
                 <div className="mt-6">
                   <button
-                    onClick={() => handleChoosePackage([pkg.id])}
+                    onClick={() => handleChoosePackage(pkg.id)}
                     className="w-full rounded-xl bg-brand-red px-4 py-3 text-sm font-bold text-white transition hover:bg-brand-redDark disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     Choose {pkg.name}
@@ -145,7 +167,11 @@ export default function Packages() {
 
         {/* Running order summary + checkout */}
         {selected.length > 0 && (
-          <div className="mx-auto mt-10 max-w-2xl rounded-xl2 border border-brand-blue/30 bg-white p-6 shadow-cardHover">
+          <div
+            id="your-order"
+            ref={orderSummaryRef}
+            className="mx-auto mt-10 max-w-2xl scroll-mt-24 rounded-xl2 border border-brand-blue/30 bg-white p-6 shadow-cardHover"
+          >
             <h3 className="text-sm font-bold uppercase tracking-wide text-brand-slate">Your Order</h3>
             <ul className="mt-3 space-y-1.5">
               {pricing.plans.map((p) => (
@@ -178,7 +204,7 @@ export default function Packages() {
             </div>
 
             <button
-              onClick={() => handleChoosePackage(selected)}
+              onClick={() => handleLeadModalOpen(selected)}
               className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-brand-blue px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-blueDark disabled:cursor-not-allowed disabled:opacity-60"
             >
               Proceed to Payment
