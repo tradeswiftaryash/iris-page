@@ -96,18 +96,20 @@ export default function ContactCta() {
                 ))}
               </div>
             </div>
-            {CONTACT.sebiRegNo && (
-              <p className="mt-3 text-center lg:text-right text-xs md:text-sm font-medium text-blue-100">
-                {CONTACT.sebiRegNo}
-              </p>
-            )}
           </div>
         </div>
 
-        {/* Bottom Section: Copyright & Disclaimer from Left to Right */}
-        <div className="mt-12 pt-6 border-t border-white/20 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs md:text-sm text-blue-100 leading-relaxed">
-          <span className="font-medium text-white whitespace-nowrap">{FOOTER.copyright}</span>
-          <span>{FOOTER.disclaimer}</span>
+        {/* Bottom Section: Centered SEBI Reg No, Disclaimer, and Copyright each on a separate line */}
+        <div className="mt-12 pt-6 border-t border-white/20 text-center text-xs md:text-sm text-blue-100 leading-relaxed space-y-2">
+          <p className="font-medium text-white">
+            {CONTACT.sebiRegNo}
+          </p>
+          <p>
+            {FOOTER.disclaimer}
+          </p>
+          <p className="font-medium text-white">
+            {FOOTER.copyright}
+          </p>
         </div>
       </div>
     </section>
