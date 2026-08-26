@@ -68,7 +68,7 @@ export default function ContactCta() {
             <div className="mt-8">
               <Link
                 href={CONTACT.cta.href}
-                className="inline-flex items-center justify-center rounded-lg bg-brand-red px-8 py-3.5 text-sm font-semibold text-white shadow-card transition hover:bg-brand-redDark"
+                className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3.5 text-sm font-bold text-black shadow-card transition hover:bg-gray-100"
               >
                 {CONTACT.cta.label}
               </Link>

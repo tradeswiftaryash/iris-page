@@ -19,7 +19,7 @@ export default function Hero() {
             {HERO.subtitle}
           </p>
 
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-brand-slate">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-black">
             {HERO.description}
           </p>
 

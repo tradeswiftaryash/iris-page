@@ -50,10 +50,6 @@ const MATRIX_DATA = [
 const COMPLAINT_PORTALS = [
   { name: "SCORES", url: "https://scores.sebi.gov.in" },
   { name: "SMART ODR", url: "https://smartodr.in/login" },
-  { name: "MCX", url: "https://www.mcxindia.com/Investor-Services" },
-  { name: "NCDEX", url: "https://ncdex.com/investor_complaint" },
-  { name: "BSE", url: "https://bsecrs.bseindia.com/ecomplaint/frmInvestorHome.aspx" },
-  { name: "NSE", url: "https://investorhelpline.nseindia.com/NICEPLUS" },
 ];
 
 export default function InvestorGrievancePage() {
@@ -154,16 +150,16 @@ export default function InvestorGrievancePage() {
           <div className="mt-10">
             <div className="mb-4 text-center">
               <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-brand-ink">
-                Investor Grievances Escalation Matrix (Working Hours : Mon. to Fri. | 9:00 AM - 7:00 PM | Saturday : 10:00 AM to 2:00 PM)
+                Investor Grievance Escalation matrix of Research Analyst
               </h2>
             </div>
 
             <div className="overflow-x-auto rounded-2xl border border-brand-line bg-white shadow-card">
               <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[850px]">
                 <thead>
-                  <tr className="bg-[#E1251B] text-white">
+                  <tr className="bg-[#B00000] text-white">
                     <th className="py-4 px-4 sm:px-5 font-bold uppercase tracking-wider text-xs align-top w-[18%]">
-                      Detail of designation
+                      Details of designation
                     </th>
                     <th className="py-4 px-4 sm:px-5 font-bold uppercase tracking-wider text-xs align-top w-[20%]">
                       Contact Person Name
@@ -174,9 +170,7 @@ export default function InvestorGrievancePage() {
                     <th className="py-4 px-4 sm:px-5 font-bold uppercase tracking-wider text-xs align-top w-[18%]">
                       <div>Contact No.</div>
                       <div className="mt-1 text-[11px] font-normal leading-tight opacity-95">
-                        Working Hours:<br />
-                        Mon to Fri: 9:00 AM - 7:00 PM<br />
-                        Sat: 10:00 AM - 2:00 PM
+                        Working hours when complainant can call
                       </div>
                     </th>
                     <th className="py-4 px-4 sm:px-5 font-bold uppercase tracking-wider text-xs align-top w-[18%]">
@@ -232,21 +226,17 @@ export default function InvestorGrievancePage() {
             <h3 className="text-base sm:text-lg font-bold text-brand-ink">
               In absence of response/complaint not addressed to your satisfaction, you may lodge a complaint with SEBI or Exchanges at:
             </h3>
-            <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-sm sm:text-base">
+            <div className="mt-4 space-y-2 text-sm sm:text-base">
               {COMPLAINT_PORTALS.map((portal) => (
-                <div
-                  key={portal.name}
-                  className="flex items-center gap-2 rounded-xl border border-gray-100 bg-gray-50/80 px-4 py-3.5 transition hover:border-brand-blue/30 hover:bg-blue-50/40"
-                >
-                  <span className="font-bold text-brand-ink shrink-0">{portal.name} :</span>
+                <div key={portal.name} className="flex items-center gap-2">
+                  <span className="font-bold text-brand-ink">{portal.name} :</span>
                   <a
                     href={portal.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-medium text-brand-blue hover:underline break-all text-xs sm:text-sm"
+                    className="font-medium text-brand-blue hover:underline break-all"
                   >
-                    <span>{portal.url}</span>
-                    <ExternalLink size={13} className="shrink-0 text-brand-blue" />
+                    {portal.url}
                   </a>
                 </div>
               ))}

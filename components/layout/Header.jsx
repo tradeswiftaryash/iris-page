@@ -54,7 +54,7 @@ export default function Header() {
 
           <Link
             href="/pms"
-            className="px-5 py-2 rounded-lg bg-[#E1251B] text-white font-bold hover:bg-red-700 transition-colors"
+            className="px-5 py-2 rounded-lg bg-[#B00000] text-white font-bold hover:bg-[#B00000] transition-colors"
           >
             PMS
           </Link>
@@ -151,7 +151,7 @@ export default function Header() {
             <div className="grid grid-cols-2 gap-2">
               <Link
                 href="/pms"
-                className="flex items-center justify-center py-2.5 rounded-lg bg-[#E1251B] text-white font-bold text-center"
+                className="flex items-center justify-center py-2.5 rounded-lg bg-[#B00000] text-white font-bold text-center"
                 onClick={() => setMobileOpen(false)}
               >
                 PMS

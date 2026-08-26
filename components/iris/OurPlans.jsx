@@ -28,20 +28,20 @@ export default function OurPlans() {
                     <Icon size={22} />
                   </span>
                   <div>
-                    <h3 className="text-base sm:text-lg font-bold uppercase tracking-wide text-brand-ink">
+                    <h3 className="text-base sm:text-lg font-bold uppercase tracking-wide text-black">
                       {plan.name}
                     </h3>
-                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-brand-slate">
+                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-black">
                       {plan.tagline}
                     </p>
                   </div>
                 </div>
 
                 <div className="mt-6 border-t border-brand-line/60 pt-5">
-                  <p className="text-sm font-semibold text-brand-ink">{plan.benefitsTitle}</p>
+                  <p className="text-sm font-semibold text-black">{plan.benefitsTitle}</p>
                   <ul className="mt-3 space-y-2.5">
                     {plan.benefits.map((benefit, i) => (
-                      <li key={i} className="flex gap-2.5 text-xs sm:text-sm leading-relaxed text-brand-slate">
+                      <li key={i} className="flex gap-2.5 text-xs sm:text-sm leading-relaxed text-black">
                         <span className="mt-0.5 font-semibold text-brand-blue shrink-0">
                           {String.fromCharCode(97 + i)}.
                         </span>

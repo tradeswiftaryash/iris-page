@@ -13,8 +13,8 @@ module.exports = {
         brand: {
           blue: "#1E45E0", // primary navy-blue (banners, header, footer)
           blueDark: "#152F9C", // hover / darker blue
-          red: "#C23434", // primary CTA red (buttons)
-          redDark: "#A32A2A", // hover red
+          red: "#B00000", // primary CTA red (buttons, banners, headers)
+          redDark: "#B00000", // hover red
           ink: "#141B2D", // body copy on light backgrounds
           slate: "#5B6472", // secondary/muted text
           line: "#E4E7EE", // hairline borders
