@@ -69,6 +69,7 @@ export default function Header() {
 
           <div className="relative group">
             <button
+              type="button"
               className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gray-300 text-gray-700 text-xs font-medium hover:bg-gray-50 transition-colors"
               aria-label="Accessibility options"
             >
@@ -93,6 +94,7 @@ export default function Header() {
 
         {/* Mobile Hamburger Toggle */}
         <button
+          type="button"
           className="lg:hidden text-[#0B2B85] p-2"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           onClick={() => setMobileOpen((v) => !v)}
@@ -125,6 +127,7 @@ export default function Header() {
 
           {/* Search Icon */}
           <button
+            type="button"
             aria-label="Search"
             className="text-white hover:opacity-80 py-3 pl-4 pr-2 flex items-center justify-center shrink-0"
           >

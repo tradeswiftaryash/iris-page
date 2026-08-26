@@ -21,19 +21,30 @@ export default function LeadModal({ planIds = [], onClose, onSuccess }) {
       if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", handleKeyDown);
+    const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = originalOverflow || "";
     };
   }, [onClose]);
+
+  const cleanPhoneNumber = (val) => {
+    let digits = val.replace(/\D/g, "");
+    if (digits.length > 10 && digits.startsWith("91")) {
+      digits = digits.slice(2);
+    } else if (digits.length > 10 && digits.startsWith("0")) {
+      digits = digits.slice(1);
+    }
+    return digits.slice(0, 10);
+  };
 
   const validateForm = () => {
     if (!name.trim() || name.trim().length < 2) {
       setError("Please enter your full name (at least 2 characters).");
       return false;
     }
-    const cleanPhone = phone.replace(/\D/g, "");
+    const cleanPhone = cleanPhoneNumber(phone);
     if (!cleanPhone || cleanPhone.length !== 10) {
       setError("Please enter a valid 10-digit phone number.");
       return false;
@@ -86,6 +97,9 @@ export default function LeadModal({ planIds = [], onClose, onSuccess }) {
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm transition-opacity"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
     >
       <div
         className="relative flex w-full max-w-lg flex-col rounded-xl2 bg-white p-6 shadow-2xl transition-all"
@@ -93,7 +107,7 @@ export default function LeadModal({ planIds = [], onClose, onSuccess }) {
       >
         <div className="flex items-start justify-between border-b border-brand-line pb-4">
           <div>
-            <h3 className="text-xl font-bold text-brand-ink">Subscribe to IRIS</h3>
+            <h3 id="modal-title" className="text-xl font-bold text-brand-ink">Subscribe to IRIS</h3>
             <p className="mt-1 text-sm font-medium text-brand-slate">
               Selected Package:{" "}
               <span className="font-bold text-brand-blue">{selectedNames || "IRIS Subscription"}</span>
@@ -164,8 +178,7 @@ export default function LeadModal({ planIds = [], onClose, onSuccess }) {
                 placeholder="e.g. 9876543210"
                 value={phone}
                 onChange={(e) => {
-                  const val = e.target.value.replace(/\D/g, "").slice(0, 10);
-                  setPhone(val);
+                  setPhone(cleanPhoneNumber(e.target.value));
                 }}
                 disabled={loading}
                 className="mt-1 w-full rounded-lg border border-brand-line px-3.5 py-2.5 text-sm text-brand-ink placeholder:text-gray-400 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue"

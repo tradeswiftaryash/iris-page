@@ -11,7 +11,12 @@ function isValidEmail(email) {
 
 function isValidPhone(phone) {
   if (typeof phone !== "string") return false;
-  const digits = phone.replace(/\D/g, "");
+  let digits = phone.replace(/\D/g, "");
+  if (digits.length > 10 && digits.startsWith("91")) {
+    digits = digits.slice(2);
+  } else if (digits.length > 10 && digits.startsWith("0")) {
+    digits = digits.slice(1);
+  }
   return digits.length === 10;
 }
 
@@ -22,7 +27,7 @@ export async function POST(request) {
 
     // Validate inputs
     const trimmedName = typeof name === "string" ? name.trim() : "";
-    const trimmedPhone = typeof phone === "string" ? phone.trim() : "";
+    const rawPhone = typeof phone === "string" ? phone.trim() : "";
     const trimmedEmail = typeof email === "string" ? email.trim().toLowerCase() : "";
 
     if (!trimmedName || trimmedName.length < 2) {
@@ -32,11 +37,18 @@ export async function POST(request) {
       );
     }
 
-    if (!isValidPhone(trimmedPhone)) {
+    if (!isValidPhone(rawPhone)) {
       return NextResponse.json(
         { error: "Please enter a valid 10-digit phone number." },
         { status: 400 }
       );
+    }
+
+    let cleanPhone = rawPhone.replace(/\D/g, "");
+    if (cleanPhone.length > 10 && cleanPhone.startsWith("91")) {
+      cleanPhone = cleanPhone.slice(2);
+    } else if (cleanPhone.length > 10 && cleanPhone.startsWith("0")) {
+      cleanPhone = cleanPhone.slice(1);
     }
 
     if (!isValidEmail(trimmedEmail)) {
@@ -84,7 +96,7 @@ export async function POST(request) {
       customer = await prisma.customer.create({
         data: {
           name: trimmedName,
-          phone: trimmedPhone,
+          phone: cleanPhone,
           email: trimmedEmail,
         },
       });
@@ -93,7 +105,7 @@ export async function POST(request) {
         where: { id: customer.id },
         data: {
           name: trimmedName,
-          phone: trimmedPhone,
+          phone: cleanPhone,
         },
       });
     }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { MessageCircle, Phone, Mail, MapPin, FileText, ExternalLink } from "lucide-react";
-import { CONTACT, COMPLIANCE_DOCS } from "@/data/iris-data";
+import { CONTACT, COMPLIANCE_DOCS, FOOTER } from "@/data/iris-data";
 
 export default function ContactCta() {
   return (
@@ -96,9 +96,21 @@ export default function ContactCta() {
                 ))}
               </div>
             </div>
+            {CONTACT.sebiRegNo && (
+              <p className="mt-3 text-center lg:text-right text-xs md:text-sm font-medium text-blue-100">
+                {CONTACT.sebiRegNo}
+              </p>
+            )}
           </div>
+        </div>
+
+        {/* Bottom Section: Copyright & Disclaimer from Left to Right */}
+        <div className="mt-12 pt-6 border-t border-white/20 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs md:text-sm text-blue-100 leading-relaxed">
+          <span className="font-medium text-white whitespace-nowrap">{FOOTER.copyright}</span>
+          <span>{FOOTER.disclaimer}</span>
         </div>
       </div>
     </section>
   );
 }
+

@@ -253,6 +253,7 @@ export const CONTACT = {
   landline: "0141-4050517",
   email: "advisory@tradeswift.net",
   address: "4th Floor, Baid House, 1, Tara Nagar, Ajmer Road, Jaipur",
+  sebiRegNo: "SEBI Reg. No.: INH000029607",
 };
 
 export const COMPLIANCE_DOCS = [
@@ -262,3 +263,9 @@ export const COMPLIANCE_DOCS = [
   { id: "mitc", title: "MITC", pdfUrl: "#" },
   { id: "escalation-matrix", title: "Investor Grievance Escalation matrix", pdfUrl: "#" },
 ];
+
+export const FOOTER = {
+  copyright: "Copyright © Tradeswift",
+  disclaimer: "Disclaimer : “Investment in securities market are subject to market risks, read all the related documents carefully before investing”",
+};
+

@@ -110,7 +110,7 @@ export default function Packages() {
 
                   {/* Clean Inline Table without outer box */}
                   <div className="mt-5 overflow-x-auto">
-                    <table className="w-full text-left text-xs border-collapse">
+                    <table className="w-full text-left text-xs border-collapse min-w-[360px]">
                       <thead>
                         <tr className="border-b border-brand-line">
                           <th className="py-2.5 pr-2 font-semibold text-brand-ink align-top">Feature</th>
@@ -296,6 +296,13 @@ export default function Packages() {
         <LeadModal
           planIds={leadPlanIds}
           onClose={() => setLeadPlanIds(null)}
+          onSuccess={() => {
+            setStatus({
+              state: "success",
+              message: "Your subscription request has been received! Our team will contact you shortly.",
+            });
+            setSelected([]);
+          }}
         />
       )}
     </section>
