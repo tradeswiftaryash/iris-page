@@ -79,21 +79,27 @@ export default function ContactCta() {
           <div className="lg:col-span-5">
             <div className="w-full rounded-2xl bg-white p-5 md:p-6 shadow-xl text-brand-ink">
               <div className="flex flex-col gap-2.5">
-                {COMPLIANCE_DOCS.map((doc) => (
-                  <a
-                    key={doc.id}
-                    href={doc.pdfUrl}
-                    target={doc.pdfUrl !== "#" ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 text-sm font-semibold text-brand-ink transition hover:border-brand-blue hover:bg-brand-surface hover:text-brand-blue group"
-                  >
-                    <span className="flex items-center gap-2.5">
-                      <FileText size={16} className="text-brand-blue shrink-0" />
-                      {doc.title}
-                    </span>
-                    <ExternalLink size={14} className="text-gray-400 group-hover:text-brand-blue shrink-0 transition" />
-                  </a>
-                ))}
+                {COMPLIANCE_DOCS.map((doc) => {
+                  const isInternal = doc.pdfUrl.startsWith("/");
+                  const isExternal = doc.pdfUrl.startsWith("http") || doc.pdfUrl.endsWith(".pdf");
+                  const LinkComponent = isInternal ? Link : "a";
+
+                  return (
+                    <LinkComponent
+                      key={doc.id}
+                      href={doc.pdfUrl}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 text-sm font-semibold text-brand-ink transition hover:border-brand-blue hover:bg-brand-surface hover:text-brand-blue group"
+                    >
+                      <span className="flex items-center gap-2.5">
+                        <FileText size={16} className="text-brand-blue shrink-0" />
+                        {doc.title}
+                      </span>
+                      <ExternalLink size={14} className="text-gray-400 group-hover:text-brand-blue shrink-0 transition" />
+                    </LinkComponent>
+                  );
+                })}
               </div>
             </div>
           </div>

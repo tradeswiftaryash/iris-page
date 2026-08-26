@@ -261,7 +261,7 @@ export const COMPLIANCE_DOCS = [
   { id: "disclosure-document", title: "Disclosure Document", pdfUrl: "#" },
   { id: "dos-and-donts", title: "Do's & Don'ts", pdfUrl: "#" },
   { id: "mitc", title: "MITC", pdfUrl: "#" },
-  { id: "escalation-matrix", title: "Investor Grievance Escalation matrix", pdfUrl: "#" },
+  { id: "escalation-matrix", title: "Investor Grievance Escalation matrix", pdfUrl: "/investor-grievance-escalation-matrix" },
 ];
 
 export const FOOTER = {
