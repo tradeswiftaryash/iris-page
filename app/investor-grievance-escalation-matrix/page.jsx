@@ -19,10 +19,10 @@ const MATRIX_DATA = [
   },
   {
     designation: "Head of Customer Care",
-    name: "Anuj Bhargava",
+    name: "Rakesh Sharma",
     address: "4th Floor, Baid House, 1-Tara Nagar, Ajmer Road, Jaipur-302006",
     contact: "0141-4050517",
-    emails: ["advisory@tradeswift.net"],
+    emails: ["rakesh@tradeswift.net"],
   },
   {
     designation: "Compliance Officer",
